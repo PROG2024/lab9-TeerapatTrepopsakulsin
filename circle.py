@@ -19,6 +19,17 @@ class Circle:
         area of this circle and another circle.
         Since area is pi*r**2, the radii of the 3 circles
         should form a Pythagorean triple (r1^2 + r2^2 = r3^2)
+        >>> c3 = Circle(3)
+        >>> c4 = Circle(4)
+        >>> c5 = c3.add_area(c4)
+        >>> c5.get_area()
+        78.53981633974483
+        >>> c5.get_radius()
+        5.0
+        >>> c_negative = Circle(-7)
+        Traceback (most recent call last):
+        ...
+        ValueError: radius must be non-negative
         """
         r1 = self.get_radius()
         r2 = circle.get_radius()
