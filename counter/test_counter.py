@@ -17,6 +17,7 @@ class TestCounter(unittest.TestCase):
 
     def test_count_and_increment(self):
         counter = Counter()
+        counter.count = 0
         self.assertEqual(0, counter.count)
         self.assertEqual(0, counter.count)
         self.assertEqual(1, counter.increment())
@@ -25,15 +26,16 @@ class TestCounter(unittest.TestCase):
         self.assertEqual(2, counter.count)
 
     def test_singleton(self):
-        counter = Counter()
-        counter.increment()
-        counter.increment()
-        self.assertEqual(2, counter.count)
+        counter1 = Counter()
+        counter1.count = 0
+        counter1.increment()
+        counter1.increment()
+        self.assertEqual(2, counter1.count)
 
         counter2 = Counter()
-        self.assertTrue(counter2 is counter)
+        self.assertTrue(counter2 is counter1)
         self.assertEqual(2, counter2.count)
         self.assertEqual(3, counter2.increment())
-        self.assertEqual(3, counter.count)
-        counter.increment()
-        self.assertEqual(counter.count, counter2.count)
+        self.assertEqual(3, counter1.count)
+        counter1.increment()
+        self.assertEqual(counter1.count, counter2.count)
